@@ -2,7 +2,7 @@
 
 class Router
 {
-    public function run()
+     public function run()
     {
         $url = isset($_GET['url']) ? $_GET['url'] : 'login/index';
         $url = rtrim($url, '/');
@@ -12,7 +12,12 @@ class Router
         $method = isset($urlParts[1]) ? $urlParts[1] : 'index';
         $params = array_slice($urlParts, 2);
 
-        $controllerFile = __DIR__ . '/../app/controllers/' . $controllerName . '.php';
+        // Manejo especial para rutas de comanda
+        if ($controllerName === 'ComandaController') {
+            $controllerFile = __DIR__ . '/../app/controllers/ComandaController.php';
+        } else {
+            $controllerFile = __DIR__ . '/../app/controllers/' . $controllerName . '.php';
+        }
 
         if (file_exists($controllerFile)) {
             require_once $controllerFile;
@@ -32,7 +37,7 @@ class Router
             $this->handleError('404');
         }
     }
-
+    
     private function handleError($code)
     {
         http_response_code((int)$code);

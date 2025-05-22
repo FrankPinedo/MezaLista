@@ -15,13 +15,33 @@ class MozoController
             (new ErrorController())->index('403');
             exit();
         }
-        require_once __DIR__ . '/../views/mozo/inicio.php';
+        
+        // QUITAR ESTA LÍNEA - NO CARGAR LA VISTA AQUÍ
+        // require_once __DIR__ . '/../views/mozo/inicio.php';
     }
 
     public function index()
     {
+        // AHORA SÍ CARGAR LA VISTA AQUÍ
         require_once __DIR__ . '/../views/mozo/inicio.php';
     }
+
+    /**
+     * Redirige al módulo de comanda para una mesa específica
+     */
+    public function comanda($mesa = null)
+    {
+        if (!$mesa) {
+            header('Location: ' . BASE_URL . '/mozo');
+            exit();
+        }
+
+        // Incluir y ejecutar el ComandaController
+        require_once __DIR__ . '/ComandaController.php';
+        $comandaController = new ComandaController();
+        $comandaController->index($mesa);
+    }
+
     public function logout()
     {
         session_start();

@@ -40,4 +40,20 @@ class PlatoModel
         $stmt = $this->db->prepare("UPDATE platos SET nombre=?, precio=?, stock=?, descripcion=?, estado=?, imagen=? WHERE id_plato=?");
         return $stmt->execute([$nombre, $precio, $stock, $descripcion, $estado, $imagen, $id]);
     }
+
+    /**
+     * NUEVO: Obtiene platos por tipo para el módulo de comanda
+     */
+    public function obtenerPlatosPorTipo($tipo)
+    {
+        $stmt = $this->db->prepare("
+            SELECT id_plato, nombre, descripcion, precio, imagen, stock, estado, tipo
+            FROM platos 
+            WHERE tipo = :tipo 
+            ORDER BY nombre ASC
+        ");
+        $stmt->bindParam(':tipo', $tipo);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
