@@ -1,0 +1,122 @@
+/* ==== MENÚ LATERAL ==== */
+.sidebar-mozo {
+    background-color: #8c8c8c; /* plomo oscuro */
+    min-height: 100vh;
+    width: 270px;
+    color: white;
+}
+
+/* ==== BOTONES DEL MENÚ EN 2 COLUMNAS ==== */
+.menu-icon-btn {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    padding: 8px 4px;
+    transition: 0.3s ease;
+}
+
+.menu-icon-btn img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.menu-icon-btn span {
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.menu-icon-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+
+/* ==== BOTÓN SALIR ==== */
+.btn.btn-danger img {
+    filter: invert(1);
+    width: 20px;
+    height: 20px;
+}
+
+/* ==== MESAS ==== */
+.mesa-btn {
+    width: 100%;
+    height: 100px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    white-space: normal;
+    text-align: center;
+    padding: 10px;
+}
+
+/* ==== ESTADOS DE MESAS ==== */
+.mesa-libre {
+    background-color: #6c757d;
+    color: white;
+}
+
+.mesa-reservado {
+    background-color: #ffc107;
+    color: black;
+}
+
+.mesa-esperando {
+    background-color: #dc3545;
+    color: white;
+}
+
+.mesa-pagando {
+    background-color: #198754;
+    color: white;
+}
+
+.mesa-combinada {
+    background-color: #28a745;
+    color: white;
+}
+
+.mesa-btn.selected {
+    outline: 4px solid #000;
+}
+
+.mesa-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ==== CAMPANA ==== */
+.bi-bell-fill {
+    cursor: pointer;
+}
+
+/* ==== RESPONSIVO ==== */
+@media (max-width: 768px) {
+    .mesa-btn {
+        height: 80px;
+        font-size: 16px;
+    }
+
+    .menu-icon-btn img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .menu-icon-btn span {
+        font-size: 11px;
+    }
+
+    .sidebar-mozo {
+        width: 100%;
+        min-height: unset;
+    }
+}
